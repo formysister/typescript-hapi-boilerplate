@@ -38,7 +38,7 @@ You should see the output in your terminal:
 ```
 # npm run dev
 
-> hapi-typescript-boilerplate@1.0.0 dev /Users/alex/Documents/projects/typescript-hapi-boilerplate
+> hapi-typescript-boilerplate@1.0.0 dev /Users/Administrator/Documents/projects/typescript-hapi-boilerplate
 > nodemon
 
 [nodemon] 2.0.2
