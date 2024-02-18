@@ -12,7 +12,7 @@ This is our official starter kit which has been tested in our production and pas
 
 Clone this repo.
 ```
-git clone https://github.com/formysister/typescript-hapi-boilerplate.git`
+git clone https://github.com/formysister/typescript-hapi-boilerplate.git
 ```
 
 ### Installation
