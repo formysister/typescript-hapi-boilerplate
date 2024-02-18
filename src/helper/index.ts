@@ -1,3 +1,4 @@
-import ModelHelper from "./model";
+import ModelHelper from "./Model";
+import EthereumHelper from "./Ethereum";
 
-export { ModelHelper }
+export { ModelHelper, EthereumHelper }
