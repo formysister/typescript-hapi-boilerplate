@@ -1,7 +1,12 @@
+// ** import external libraries
 import { Request } from "@hapi/hapi"
 import path from "path"
 import axios from "axios"
+
+// ** import custom constants
 import { GLOBAL_API } from "../../constant"
+
+// ** import custom types
 import { IpDetail } from "../../types"
 
 class GatewayHelper {
