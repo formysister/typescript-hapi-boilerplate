@@ -11,7 +11,7 @@ class ResponseUtil {
      * @param error 
      * @returns {Error}
      */
-    static faileAction = async (request?: Request, reply?: ResponseToolkit, error?: Error) => {
+    static failAction = async (request?: Request, reply?: ResponseToolkit, error?: Error) => {
         return error
     }
 

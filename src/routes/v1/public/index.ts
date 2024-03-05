@@ -5,6 +5,9 @@ import Joi from '@hapi/joi'
 // ** import controller
 import { DataController } from '../../../controller'
 
+// ** import helper
+import { GatewayHelper } from '../../../helper'
+
 // ** import custom utilities
 import { ResponseUtil } from '../../../utils'
 
@@ -27,6 +30,25 @@ const PUBLIC_ROUTER: Hapi.ServerRoute[] = [
             tags: ['baseurl', 'default', 'check api status']
         }
     },
+    {
+        method: METHOD.GET,
+        path: VERSION.V1 + ENDPOINT.GET.IP,
+        options: {
+            handler: async (request, reply) => {
+                try {
+                    const response = await GatewayHelper.getIpDetail(request.info.remoteAddress)
+
+                    return ResponseUtil.sendResponse(response, reply)
+                }
+                catch(error) {
+                    throw error
+                }
+            },
+            description: 'API for checking IP address information',
+            notes: 'Hit the endpoint to get remote IP detail',
+            tags: ['baseurl', 'default', 'check ip detail']
+        }
+    },
     /**
      * POST endpoints
      */
@@ -35,16 +57,21 @@ const PUBLIC_ROUTER: Hapi.ServerRoute[] = [
         path: VERSION.V1 + ENDPOINT.POST.DEFAULT,
         options: {
             handler: (request, reply) => {
-                const response = DataController.checkResponse(request.payload)
+                try {
+                    const response = DataController.checkResponse(request.info.remoteAddress)
 
-                return ResponseUtil.sendResponse(response, reply)
+                    return ResponseUtil.sendResponse(response, reply)
+                }
+                catch(error) {
+                    return Object(error)
+                }
             },
             validate: {
-                failAction: ResponseUtil.faileAction,
+                failAction: ResponseUtil.failAction,
                 payload: Joi.object({
                     number: Joi.number().required(),
                     string: Joi.string().required(),
-                    optional: Joi.any()
+                    optional: Joi.any().optional()
                 })
             },
             description: 'API base default public endpoints (POST)',

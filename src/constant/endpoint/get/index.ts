@@ -1,5 +1,6 @@
 const GET = {
-    DEFAULT: '/'
+    DEFAULT: '/',
+    IP: '/ip'
 }
 
 export default GET
